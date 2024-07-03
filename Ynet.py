@@ -13,9 +13,9 @@ class TelegramForwarder:
         await self.client.connect()
 
         # Ensure you're authorized
-        if not await self.client.is_user_authorized():
-            await self.client.send_code_request(self.phone_number)
-            await self.client.sign_in(self.phone_number, input('Enter the code: '))
+        #if not await self.client.is_user_authorized():
+         #   await self.client.send_code_request(self.phone_number)
+          #  await self.client.sign_in(self.phone_number, input('Enter the code: '))
 
         # Get a list of all the dialogs (chats)
         dialogs = await self.client.get_dialogs()
