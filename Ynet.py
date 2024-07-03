@@ -12,6 +12,11 @@ class TelegramForwarder:
 
     async def forward_messages_to_channel(self, source_chat_id, destination_channel_id):
         await self.client.connect()
+        
+        if not self.client.is_user_authorized():
+            self.client.send_code_request('+972504640969')
+            self.client.sign_in('+972504640969', input('Enter the code: '))
+        
         last_message_id = (await self.client.get_messages(source_chat_id, limit=1))[0].id
 
         while True:
@@ -60,6 +65,7 @@ async def main():
 
     source_chat_id = -1001397114707 
     destination_channel_id = -1001745841781 
+    phone_number = '+972504640969'
     
         
     await forwarder.forward_messages_to_channel(source_chat_id, destination_channel_id)
