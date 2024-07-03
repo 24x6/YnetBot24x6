@@ -10,9 +10,8 @@ class TelegramForwarder:
         self.client = TelegramClient('session_' + phone_number, api_id, api_hash)
 
 
-    async def forward_messages_to_channel(self, source_chat_id, destination_channel_id, keywords):
+    async def forward_messages_to_channel(self, source_chat_id, destination_channel_id):
         await self.client.connect()
-        
         last_message_id = (await self.client.get_messages(source_chat_id, limit=1))[0].id
 
         while True:
@@ -54,18 +53,16 @@ def read_credentials():
 
 
 async def main():
+    
     print('bot start')
-    # Attempt to read credentials from file
-    api_id, api_hash, phone_number = read_credentials()
-    print('read_credentials')
-
-    forwarder = TelegramForwarder(api_id, api_hash, phone_number)
+    
+    forwarder = TelegramForwarder('22701033', '9428ef925607e9afe220e31176170b70', '+972504640969')
 
     source_chat_id = -1001397114707 
     destination_channel_id = -1001745841781 
-    keywords = '' 
+    
         
-    await forwarder.forward_messages_to_channel(source_chat_id, destination_channel_id, keywords)
+    await forwarder.forward_messages_to_channel(source_chat_id, destination_channel_id)
 
 
 # Start the event loop and run the main function
