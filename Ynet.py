@@ -89,9 +89,9 @@ async def main():
 
     # If credentials not found in file, prompt the user to input them
     if api_id is None or api_hash is None or phone_number is None:
-        api_id = input("Enter your API ID: ")
-        api_hash = input("Enter your API Hash: ")
-        phone_number = input("Enter your phone number: ")
+        api_id = 22701033 #input("Enter your API ID: ")
+        api_hash = '9428ef925607e9afe220e31176170b70' # input("Enter your API Hash: ")
+        phone_number = +972504640969 #input("Enter your phone number: ")
         # Write credentials to file for future use
         write_credentials(api_id, api_hash, phone_number)
 
