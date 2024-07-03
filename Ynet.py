@@ -32,9 +32,9 @@ class TelegramForwarder:
         await self.client.connect()
 
         # Ensure you're authorized
-        if not await self.client.is_user_authorized():
-            await self.client.send_code_request(self.phone_number)
-            await self.client.sign_in(self.phone_number, input('Enter the code: '))
+        #if not await self.client.is_user_authorized():
+         #   await self.client.send_code_request(self.phone_number)
+          #  await self.client.sign_in(self.phone_number, input('Enter the code: '))
 
         last_message_id = (await self.client.get_messages(source_chat_id, limit=1))[0].id
 
